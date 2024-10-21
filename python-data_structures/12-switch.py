@@ -4,4 +4,3 @@ b = 10
 # Your code to switch the values
 a, b = b, a
 print("a={} - b={}".format(a, b))
-
