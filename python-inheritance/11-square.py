@@ -5,8 +5,7 @@ Module for Square class that inherits from Rectangle.
 
 
 class Rectangle:
-    """ Rectangle class to validate and calculate area for width and height. """
-    
+    """ Rectangle class to validate and calculate area. """    
     def __init__(self, width, height):
         """ Initialize the rectangle with width and height. """
         self.integer_validator("width", width)
@@ -28,6 +27,8 @@ class Rectangle:
     def __str__(self):
         """ String representation of the rectangle """
         return f"[Rectangle] {self.__width}/{self.__height}"
+
+
 class Square(Rectangle):
     """ Square class inheriting from Rectangle """
 
@@ -44,4 +45,3 @@ class Square(Rectangle):
     def __str__(self):
         """ String representation of the square """
         return f"[Square] {self.__size}/{self.__size}"
-
