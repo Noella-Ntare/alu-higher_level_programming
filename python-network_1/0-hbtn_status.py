@@ -11,7 +11,6 @@ with urllib.request.urlopen(url) as response:
 
 # Print the body details as required
 print("Body response:")
-print("\t- type: {}".format(type(body)))
-print("\t- content: {}".format(body))
+print("\t- type: {}".format(type(content)))
+print("\t- content: {}".format(content))
 print("\t- utf8 content: {}".format(body.decode("utf-8")))
-
