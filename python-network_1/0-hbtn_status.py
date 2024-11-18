@@ -4,7 +4,7 @@
 import urllib.request
 
 if __name__ == '__main__':
-    url = 'https://alu-intranet.hbtn.io/status'
+    url = 'https://0.0.0.0:5050/status'
 
     # Make the request
     with urllib.request.urlopen(url) as response:
