@@ -1,23 +1,36 @@
 #!/usr/bin/python3
-"""A function that prints the sqaures"""
+"""
+This module provides a function for formatting a text by adding two new lines
+after each of these characters: `.`, `?`, and `:`.
+"""
 
-
-def print_square(size):
-    '''FUnction to print the squares
+def text_indentation(text):
+    """
+    Prints a text with two new lines after each of these characters: `.`, `?`, `:`.
+    
     Args:
-        size : must be an integer
-    Returns:
-        prints the square
-    '''
-    square_char = "#"
-    if type(size) != int:
-        raise TypeError("size must be an integer")
-    if size < 0:
-        raise ValueError("size must be >= 0")
-    if type(size) == float and size < 0:
-        raise TypeError("size must be an integer")
+        text (str): The input text to be formatted.
+    
+    Raises:
+        TypeError: If `text` is not a string.
+    """
+    if not isinstance(text, str):
+        raise TypeError("text must be a string")
+    
+    # Initialize variables
+    formatted_text = ""
+    skip_space = False  # To skip spaces after the characters
+    
+    for char in text:
+        if char in ".:?":
+            formatted_text += char + "\n\n"
+            skip_space = True  # Skip any spaces after these characters
+        elif skip_space and char == " ":
+            continue
+        else:
+            formatted_text += char
+            skip_space = False  # Reset skipping if no space encountered
+    
+    # Print the final formatted text
+    print(formatted_text.strip(), end="")
 
-    for i in range(size):
-        for j in range(size):
-            print(square_char, end="")
-        print()
