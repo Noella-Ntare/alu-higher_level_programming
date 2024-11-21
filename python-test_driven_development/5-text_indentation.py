@@ -1,23 +1,50 @@
 #!/usr/bin/python3
-"""A function that prints the sqaures"""
+""""Doc"""
 
 
-def print_square(size):
-    '''FUnction to print the squares
-    Args:
-        size : must be an integer
-    Returns:
-        prints the square
-    '''
-    square_char = "#"
-    if type(size) != int:
-        raise TypeError("size must be an integer")
-    if size < 0:
-        raise ValueError("size must be >= 0")
-    if type(size) == float and size < 0:
-        raise TypeError("size must be an integer")
+def text_indentation(text):
+    """ Doc here
+    """
+    if type(text) is not str:
+        raise TypeError("text must be a string")
 
-    for i in range(size):
-        for j in range(size):
-            print(square_char, end="")
-        print()
+    for delim in ".:?":
+        text = (delim + "\n\n").join(
+            [line.strip(" ") for line in text.split(delim)])
+
+    print("{}".format(text), end="")
+
+# def text_indentation(text):
+#     """"Doc"""
+#     if not isinstance(text, (str,)):
+#         raise TypeError("text must be a string")
+
+#     characters = [".", "?", ":"]
+#     index = 0
+#     while index < len(text):
+#         if text[index] in characters:
+#             print(text[index], end="")
+#             print('\n')
+#             index += 1
+#             if text[index] == " ":
+#                 index += 1
+#         else:
+#             print(text[index], end="")
+#             index += 1
+
+# def text_indentation(text):
+#     """"Doc"""
+#     if not isinstance(text, (str,)):
+#         raise TypeError("text must be a string")
+
+#     characters = [".", "?", ":"]
+#     for i in range(len(text)):
+#         if text[i] in characters:
+#             try:
+#                 if text[i + 1] == " ":
+#                     text = text[:i + 1] + "\n\n" + text[i + 2:]
+#                 else:
+#                     text = text[:i + 1] + "\n\n" + text[i + 1:]
+#             except IndexError:
+#                 pass
+#     print(text, end="")
