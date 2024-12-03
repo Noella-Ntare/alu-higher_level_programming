@@ -1,0 +1,45 @@
+import csv
+from models.base import Base
+
+
+class Base:
+    # Existing methods ...
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serializes a list of objects to a CSV file."""
+        if list_objs is None or not list_objs:
+            list_objs = []
+        
+        file_name = f"{cls.__name__}.csv"
+
+        with open(file_name, "w", newline="") as csv_file:
+            writer = csv.writer(csv_file)
+
+            if cls.__name__ == "Rectangle":
+                for obj in list_objs:
+                    writer.writerow([obj.id, obj.width, obj.height, obj.x, obj.y])
+            elif cls.__name__ == "Square":
+                for obj in list_objs:
+                    writer.writerow([obj.id, obj.size, obj.x, obj.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserializes objects from a CSV file."""
+        file_name = f"{cls.__name__}.csv"
+        try:
+            with open(file_name, "r", newline="") as csv_file:
+                reader = csv.reader(csv_file)
+                obj_list = []
+
+                for row in reader:
+                    if cls.__name__ == "Rectangle":
+                        obj = cls(int(row[1]), int(row[2]), int(row[3]), int(row[4]), int(row[0]))
+                    elif cls.__name__ == "Square":
+                        obj = cls(int(row[1]), int(row[2]), int(row[3]), int(row[0]))
+                    obj_list.append(obj)
+
+                return obj_list
+        except FileNotFoundError:
+            return []
+
