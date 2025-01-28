@@ -7,5 +7,5 @@ if (args.length === 0) {
 } else if (arg.length ===1) {
     console.group('Argument found');
 } else {
-    console.log('Argumen found');
+    console.log('Argument found');
 }
