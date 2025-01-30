@@ -2,14 +2,12 @@
 
 const args = process.argv.slice(2);
 
-const num = parseInt(args[0]);
+const num1 = parseInt(args[0]);
+const num2 = parseInt(args[1]);
 
-if (num) {
-  for (let i = 0; i < num; i++) {
-    console.log('X'.repeat(num));
-  }
-} else if (num < 0) {
-  console.log();
-} else {
-  console.log('Missing size');
+function add (a, b) {
+  constant sum = a + b;
+  console.log(sum);
 }
+
+add(num1, num2);
